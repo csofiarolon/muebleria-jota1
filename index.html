@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mueblería Jota</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/variables.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <header class="nav-bar">
+      <img
+        class="logo-header"
+        src="./assets/logo.svg"
+        alt="Mueblería Jota"
+      />
+
+      <nav class="secciones" aria-label="Secciones">
+        <a href="#">LIVING</a>
+        <a href="#">COMEDOR</a>
+        <a href="#">ESTUDIO</a>
+        <a href="#">CONTACTANOS</a>
+      </nav>
+
+      <div class="profile">
+        <img
+          class="profile__icon"
+          src="./assets/icon-user.svg"
+          alt=""
+        />
+        <p class="profile__label">BIENVENIDA, SOFÍA</p>
+      </div>
+    </header>
+
+    <section class="hero-section">
+      <div class="hero-container">
+        <div class="hero-copy">
+          <h1 class="hero-copy__title">Clase que se siente al tacto.</h1>
+          <p class="hero-copy__subtitle">
+            DESCUBRÍ LA SENSACIÓN DE HABITAR MATERIALES DE VERDAD.
+          </p>
+        </div>
+      </div>
+
+      <!-- Las imágenes van afuera del container de 1200px para tocar los bordes de la ventana -->
+      <div class="hero-visuals">
+        <img
+          class="hero-visuals__mesa"
+          src="./assets/Group 7.png"
+          alt="Mesa de comedor con tapa de mármol"
+        />
+        <img
+          class="hero-visuals__sillon"
+          src="./assets/Group 6.png"
+          alt="Sillón de cuero"
+        />
+      </div>
+    </section>
+
+    <section class="sostenibilidad">
+      <div class="sostenibilidad__container">
+        <article class="sostenibilidad__row">
+          <div class="sostenibilidad__copy">
+            <h2 class="sostenibilidad__title">El respeto empieza en la raíz.</h2>
+            <p class="sostenibilidad__text">
+              El diseño nace en la tierra. Elegimos maderas nativas de bosques
+              argentinos gestionados con responsabilidad:
+              <span class="sostenibilidad__accent">algarrobo, caldén y quebracho</span>.
+              Especies nobles que conocen nuestro suelo.
+            </p>
+          </div>
+          <div class="sostenibilidad__media">
+            <img
+              src="./assets/u2884128359_A_raw_cross-section_log_of_Argentine_Algarrobo_wo_39d5ba76-1113-412d-8379-6209f2582572_3 1.png"
+              alt="Corte transversal de un tronco de algarrobo"
+            />
+          </div>
+        </article>
+
+        <article class="sostenibilidad__row sostenibilidad__row--reverse">
+          <div class="sostenibilidad__copy">
+            <h2 class="sostenibilidad__title">La belleza de lo que ya vivió.</h2>
+            <p class="sostenibilidad__text">
+              El pasado tiene valor. Integramos un
+              <span class="sostenibilidad__accent">mínimo de 30% de madera recuperada</span>,
+              rescatando vetas y marcas que ningún proceso industrial puede
+              replicar.
+            </p>
+          </div>
+          <div class="sostenibilidad__media">
+            <img
+              src="./assets/Group 8.png"
+              alt="Unión de madera recuperada y madera nueva"
+            />
+          </div>
+        </article>
+
+        <article class="sostenibilidad__row">
+          <div class="sostenibilidad__copy sostenibilidad__copy--wide-gap">
+            <h2 class="sostenibilidad__title">Cercanía, oficio y aire limpio</h2>
+            <p class="sostenibilidad__text">
+              Oficio local en el Gran Buenos Aires y
+              <span class="sostenibilidad__accent">acabados de bajo COV, libres de toxinas</span>.
+              Cuidamos a los artesanos y creamos piezas que respiran con tu
+              hogar.
+            </p>
+          </div>
+          <div class="sostenibilidad__media">
+            <img
+              src="./assets/u2884128359_A_raw_cross-section_log_of_Argentine_Algarrobo_wo_39d5ba76-1113-412d-8379-6209f2582572_32.png"
+              alt="Acabado natural con cera y frasco de vidrio"
+            />
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="catalogo">
+      <div class="catalogo__container">
+        <nav class="catalogo__categories" aria-label="Categorías del catálogo">
+          <a class="catalogo__category catalogo__category--active" href="#">Livings</a>
+          <a class="catalogo__category" href="#">Comedor</a>
+          <a class="catalogo__category" href="#">Estudio</a>
+          <a class="catalogo__category" href="#">Ver todo</a>
+        </nav>
+
+        <div class="catalogo__carousel">
+          <button class="catalogo__arrow" type="button" aria-label="Producto anterior">
+            <img src="./assets/arrow-left.png" alt="" />
+          </button>
+
+          <div class="catalogo__products">
+            <article class="catalogo__card">
+              <div class="catalogo__circle">
+                <img
+                  src="./assets/Mesa Comedor Pampa.png"
+                  alt="Mesa comedor Pampa"
+                />
+              </div>
+              <p class="catalogo__name">Mesa comedor Pampa</p>
+            </article>
+
+            <article class="catalogo__card">
+              <div class="catalogo__circle">
+                <img
+                  src="./assets/Biblioteca Recoleta.png"
+                  alt="Biblioteca Recoleta"
+                />
+              </div>
+              <p class="catalogo__name">Biblioteca Recoleta</p>
+            </article>
+
+            <article class="catalogo__card">
+              <div class="catalogo__circle">
+                <img
+                  src="./assets/Sofá Patagonia.png"
+                  alt="Sofá Patagonia"
+                />
+              </div>
+              <p class="catalogo__name">Sofá Patagonia</p>
+            </article>
+          </div>
+
+          <button class="catalogo__arrow" type="button" aria-label="Producto siguiente">
+            <img src="./assets/arrow-right.png" alt="" />
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="garantia">
+      <div class="garantia__container">
+        <h2 class="garantia__title">
+          Pensado para toda la vida y cuidado por las mismas manos.
+        </h2>
+
+        <div class="garantia__content">
+          <div class="garantia__media">
+            <img
+              src="./assets/u2884128359_A_raw_cross-section_log_of_Argentine_Algarrobo_wo_39d5ba76-1113-412d-8379-6209f2582572_3.png"
+              alt="Telas, jabón y madera natural"
+            />
+          </div>
+
+          <div class="garantia__list">
+            <p class="garantia__item">
+              Tu mueble cuenta con una garantía de
+              <strong>10 años</strong> en estructura y <strong>5 años</strong> en
+              acabados.
+            </p>
+            <p class="garantia__item">
+              Te ofrecemos un servicio de <strong>restauración</strong> donde
+              recuperamos tu pieza antigua.
+            </p>
+            <p class="garantia__item">
+              Si sos cliente, <strong>te capacitamos</strong> para que cuides tu
+              mueble de la manera correcta.
+            </p>
+            <p class="garantia__item">
+              Recompramos hasta el <strong>40%</strong> de piezas bien cuidadas.
+            </p>
+            <p class="garantia__item">
+              Te llevás un <strong>certificado de trazabilidad</strong> con el
+              origen de cada material utilizado.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="opiniones">
+      <div class="opiniones__container">
+        <h2 class="opiniones__title">
+          Opiniones <span class="opiniones__title-accent">destacadas</span>
+        </h2>
+
+        <blockquote class="opiniones__card">
+          <p class="opiniones__quote">
+            “Hacía tiempo que no veía muebles con este nivel de oficio. La
+            calidez del algarrobo, las terminaciones sin químicos y la certeza
+            de que está hecha para durar generaciones. Es el centro de nuestra
+            casa.”
+          </p>
+          <footer class="opiniones__author">— Martín R.</footer>
+        </blockquote>
+      </div>
+    </section>
+
+    <section class="contacto" id="contacto">
+      <div class="contacto__container">
+        <h2 class="contacto__title">Contactanos</h2>
+
+        <div class="contacto__layout">
+          <form class="contacto__form" action="#" method="post">
+            <p class="contacto__form-title">Mandanos tu consulta</p>
+
+            <div class="contacto__fields">
+              <div class="contacto__field">
+                <label class="contacto__sr-only" for="nombre">Nombre y apellido</label>
+                <input
+                  id="nombre"
+                  class="contacto__input"
+                  type="text"
+                  name="nombre"
+                  placeholder="Nombre y apellido"
+                  autocomplete="name"
+                />
+              </div>
+
+              <div class="contacto__field">
+                <label class="contacto__sr-only" for="email">Correo electrónico</label>
+                <input
+                  id="email"
+                  class="contacto__input"
+                  type="email"
+                  name="email"
+                  placeholder="Correo electrónico"
+                  autocomplete="email"
+                />
+              </div>
+
+              <div class="contacto__field">
+                <label class="contacto__sr-only" for="consulta">Consulta</label>
+                <textarea
+                  id="consulta"
+                  class="contacto__textarea"
+                  name="consulta"
+                  placeholder="Consulta"
+                  rows="6"
+                ></textarea>
+              </div>
+            </div>
+
+            <button class="contacto__submit" type="submit">Enviar</button>
+          </form>
+
+          <aside class="contacto__info">
+            <address class="contacto__address">
+              <p><strong>Showroom y Taller</strong></p>
+              <p>Hermanos Jota — Casa Taller</p>
+              <p>
+                Av. San Juan 2847<br />
+                C1232AAB — Barrio de San Cristóbal<br />
+                Ciudad Autónoma de Buenos Aires, Argentina
+              </p>
+            </address>
+
+            <div class="map-container">
+              <iframe
+                src="https://www.google.com/maps?q=Av.+San+Juan+2847,+San+Crist%C3%B3bal,+Buenos+Aires&output=embed"
+                title="Ubicación del showroom Hermanos Jota"
+                width="100%"
+                height="100%"
+                style="border: 0"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+              ></iframe>
+            </div>
+
+            <p class="contacto__horarios">
+              <strong>Horarios:</strong><br />
+              Lunes a Viernes: 10:00 - 19:00<br />
+              Sábados: 10:00 - 14:00
+            </p>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <footer class="pie">
+      <div class="pie__container">
+        <h2 class="pie__title">Nuestras redes</h2>
+
+        <div class="pie__redes">
+          <div class="pie__item">
+            <p class="pie__label">Email general</p>
+            <a class="pie__link" href="mailto:info@hermanosjota.com.ar">
+              info@hermanosjota.com.ar
+            </a>
+          </div>
+
+          <div class="pie__item">
+            <p class="pie__label">Ventas</p>
+            <a class="pie__link" href="mailto:ventas@hermanosjota.com.ar">
+              ventas@hermanosjota.com.ar
+            </a>
+          </div>
+
+          <div class="pie__item">
+            <p class="pie__label">Instagram</p>
+            <a
+              class="pie__link"
+              href="https://www.instagram.com/hermanosjota_ba"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              @hermanosjota_ba
+            </a>
+          </div>
+
+          <div class="pie__item">
+            <p class="pie__label">WhatsApp</p>
+            <a class="pie__link" href="https://wa.me/541145678900">
+              +54 11 4567-8900
+            </a>
+          </div>
+        </div>
+
+        <p class="pie__copy">
+          HERMANOS JOTA, 2026, TODOS LOS DERECHOS RESERVADOS
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>

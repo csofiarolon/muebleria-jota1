@@ -1,0 +1,9 @@
+:root {
+    --text-main: #A0522D;
+    --bg-surface: #F5E6D3;
+    --sust-accent: #87A96B;
+    --pink-accent: #C47A6D;
+    --gold-accent: #D4A437;
+    --radius-md: 12px;
+    --transition-base: 0.25s ease;
+  }
