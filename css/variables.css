@@ -1,9 +1,1 @@
-:root {
-    --text-main: #A0522D;
-    --bg-surface: #F5E6D3;
-    --sust-accent: #87A96B;
-    --pink-accent: #C47A6D;
-    --gold-accent: #D4A437;
-    --radius-md: 12px;
-    --transition-base: 0.25s ease;
-  }
+:root{--bg-surface:#f7efe4;--text-main:#3d2b22;--gold-accent:#b88a45;--pink-accent:#a65f5a;--sust-accent:#6d7d61;--duration-fast:.2s;--duration-medium:.35s;--duration-slow:.7s;--duration-hero:1s;--ease-premium:cubic-bezier(.22,1,.36,1);--transition-base:.25s}

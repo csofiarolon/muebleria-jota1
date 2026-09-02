@@ -1,248 +1,910 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mueblería Jota</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="css/variables.css" />
-    <link rel="stylesheet" href="css/styles.css" />
-  </head>
-  <body>
-    <header class="nav-bar">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="description"
+    content="Hermanos Jota — Mueblería artesanal con maderas nativas argentinas. Diseño, calidad y tradición familiar."
+  >
+
+  <title>Mueblería Jota</title>
+
+  <!-- Tipografía -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  >
+
+  <!-- Estilos -->
+  <link rel="stylesheet" href="./css/variables.css">
+  <link rel="stylesheet" href="./css/styles.css">
+</head>
+
+<body>
+
+  <!-- Textura de fondo -->
+  <div class="grain" aria-hidden="true"></div>
+
+
+  <!-- =====================================================
+       HEADER / NAVBAR
+  ====================================================== -->
+
+  <header class="nav-bar" id="navBar">
+
+    <!-- Logo -->
+    <a href="#inicio" class="nav-bar__logo-link">
       <img
         class="logo-header"
         src="./assets/logo.svg"
         alt="Mueblería Jota"
-      />
+      >
+    </a>
 
-      <nav class="secciones" aria-label="Secciones">
-        <a href="#">LIVING</a>
-        <a href="#">COMEDOR</a>
-        <a href="#">ESTUDIO</a>
-        <a href="#">CONTACTANOS</a>
-      </nav>
 
-      <div class="profile">
-        <img
-          class="profile__icon"
-          src="./assets/icon-user.svg"
-          alt=""
-        />
-        <p class="profile__label">BIENVENIDA, SOFÍA</p>
+    <!-- Botón menú mobile -->
+    <button
+      class="nav-bar__toggle"
+      id="navToggle"
+      type="button"
+      aria-label="Abrir menú"
+      aria-expanded="false"
+      aria-controls="navLinks"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+
+    <!-- Navegación principal -->
+    <nav
+      class="secciones"
+      id="navLinks"
+      aria-label="Navegación principal"
+    >
+
+      <a href="#inicio">INICIO</a>
+
+      <a href="#catalogo">CATEGORÍAS</a>
+
+      <a href="#ofertas">OFERTAS</a>
+
+      <a href="#nuevos">NUEVOS INGRESOS</a>
+
+      <a href="#contacto">CONTACTO</a>
+
+    </nav>
+
+
+    <!-- Acciones del usuario -->
+    <div class="nav-bar__actions">
+
+      <!-- Usuario -->
+      <div class="profile-wrap" id="profileWrap">
+        <button class="profile" id="profileButton" type="button" aria-label="Perfil de usuario" aria-expanded="false">
+          <img class="profile__icon" src="./assets/icon-user.svg" alt="">
+          <span class="profile__label">SOFÍA</span>
+        </button>
+        <div class="profile-menu" id="profileMenu">
+          <p class="profile-menu__eyebrow">MI CUENTA</p>
+          <h3>Hola, Sofía</h3>
+          <a href="#contacto">Mis consultas</a>
+          <button type="button" id="loginToggle">Iniciar sesión</button>
+          <div class="login-box" id="loginBox">
+            <input type="email" id="loginEmail" placeholder="Email">
+            <input type="password" id="loginPassword" placeholder="Contraseña">
+            <button type="button" id="loginButton">INGRESAR</button>
+          </div>
+        </div>
       </div>
-    </header>
 
-    <section class="hero-section">
+
+      <!-- Carrito -->
+      <button
+        class="cart-button"
+        id="cartButton"
+        type="button"
+        aria-label="Abrir carrito"
+        aria-controls="cartPanel"
+      >
+
+        <span class="cart-button__icon" aria-hidden="true">
+          🛒
+        </span>
+
+        <span class="cart-button__label">
+          CARRITO
+        </span>
+
+        <span
+          class="cart-button__count"
+          id="cartCount"
+          aria-live="polite"
+        >
+          0
+        </span>
+
+      </button>
+
+    </div>
+
+  </header>
+
+
+
+  <!-- =====================================================
+       HERO
+  ====================================================== -->
+
+  <main>
+
+    <section
+      class="hero-section"
+      id="inicio"
+      aria-labelledby="heroTitle"
+    >
+
       <div class="hero-container">
+
         <div class="hero-copy">
-          <h1 class="hero-copy__title">Clase que se siente al tacto.</h1>
+
+          <h1
+            class="hero-copy__title"
+            id="heroTitle"
+          >
+            Clase que se siente al tacto.
+          </h1>
+
           <p class="hero-copy__subtitle">
             DESCUBRÍ LA SENSACIÓN DE HABITAR MATERIALES DE VERDAD.
           </p>
+
+          <a
+            class="hero-copy__button"
+            href="#catalogo"
+          >
+            DESCUBRIR COLECCIÓN
+          </a>
+
         </div>
+
       </div>
 
-      <!-- Las imágenes van afuera del container de 1200px para tocar los bordes de la ventana -->
-      <div class="hero-visuals">
+
+      <div
+        class="hero-visuals"
+        id="heroVisuals"
+      >
+
         <img
           class="hero-visuals__mesa"
+          id="heroMesa"
           src="./assets/Group 7.png"
-          alt="Mesa de comedor con tapa de mármol"
-        />
+          alt="Mesa de comedor de madera"
+        >
+
         <img
           class="hero-visuals__sillon"
+          id="heroSillon"
           src="./assets/Group 6.png"
           alt="Sillón de cuero"
-        />
+        >
+
       </div>
+
     </section>
 
-    <section class="sostenibilidad">
+
+
+    <!-- =====================================================
+         CATEGORÍAS DESTACADAS
+    ====================================================== -->
+
+    <section
+      class="categorias"
+      id="categorias"
+      aria-labelledby="categoriasTitle"
+    >
+
+      <div class="categorias__container">
+
+        <div class="section-heading">
+
+          <p class="section-heading__eyebrow">
+            NUESTRA COLECCIÓN
+          </p>
+
+          <h2
+            class="section-heading__title"
+            id="categoriasTitle"
+          >
+            Elegí tu espacio.
+          </h2>
+
+          <p class="section-heading__text">
+            Piezas diseñadas para acompañar cada ambiente de tu hogar.
+          </p>
+
+        </div>
+
+
+        <div class="categorias__grid">
+
+          <button
+            class="categoria-card"
+            type="button"
+            data-categoria-link="livings"
+          >
+
+            <span class="categoria-card__image">
+              <img
+                src="./assets/Group 6.png"
+                alt="Muebles para living"
+              >
+            </span>
+
+            <span class="categoria-card__name">
+              LIVING
+            </span>
+
+            <span class="categoria-card__link">
+              VER COLECCIÓN →
+            </span>
+
+          </button>
+
+
+          <button
+            class="categoria-card"
+            type="button"
+            data-categoria-link="comedor"
+          >
+
+            <span class="categoria-card__image">
+              <img
+                src="./assets/Group 7.png"
+                alt="Muebles para comedor"
+              >
+            </span>
+
+            <span class="categoria-card__name">
+              COMEDOR
+            </span>
+
+            <span class="categoria-card__link">
+              VER COLECCIÓN →
+            </span>
+
+          </button>
+
+
+          <button
+            class="categoria-card"
+            type="button"
+            data-categoria-link="estudio"
+          >
+
+            <span class="categoria-card__image">
+              <img
+                src="./assets/Group 8.png"
+                alt="Muebles para estudio"
+              >
+            </span>
+
+            <span class="categoria-card__name">
+              ESTUDIO
+            </span>
+
+            <span class="categoria-card__link">
+              VER COLECCIÓN →
+            </span>
+
+          </button>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         SOSTENIBILIDAD
+    ====================================================== -->
+
+    <section
+      class="sostenibilidad"
+      id="sostenibilidad"
+    >
+
       <div class="sostenibilidad__container">
-        <article class="sostenibilidad__row">
+
+
+        <article class="sostenibilidad__row reveal reveal--left">
+
           <div class="sostenibilidad__copy">
-            <h2 class="sostenibilidad__title">El respeto empieza en la raíz.</h2>
+
+            <h2 class="sostenibilidad__title">
+              El respeto empieza en la raíz.
+            </h2>
+
             <p class="sostenibilidad__text">
-              El diseño nace en la tierra. Elegimos maderas nativas de bosques
-              argentinos gestionados con responsabilidad:
-              <span class="sostenibilidad__accent">algarrobo, caldén y quebracho</span>.
+              El diseño nace en la tierra. Elegimos maderas nativas
+              de bosques argentinos gestionados con responsabilidad:
+              <span class="sostenibilidad__accent">
+                algarrobo, caldén y quebracho
+              </span>.
               Especies nobles que conocen nuestro suelo.
             </p>
+
           </div>
+
+
           <div class="sostenibilidad__media">
+
             <img
               src="./assets/u2884128359_A_raw_cross-section_log_of_Argentine_Algarrobo_wo_39d5ba76-1113-412d-8379-6209f2582572_3 1.png"
               alt="Corte transversal de un tronco de algarrobo"
-            />
+              loading="lazy"
+            >
+
           </div>
+
         </article>
 
-        <article class="sostenibilidad__row sostenibilidad__row--reverse">
+
+
+        <article
+          class="sostenibilidad__row sostenibilidad__row--reverse reveal reveal--right"
+        >
+
           <div class="sostenibilidad__copy">
-            <h2 class="sostenibilidad__title">La belleza de lo que ya vivió.</h2>
+
+            <h2 class="sostenibilidad__title">
+              La belleza de lo que ya vivió.
+            </h2>
+
             <p class="sostenibilidad__text">
               El pasado tiene valor. Integramos un
-              <span class="sostenibilidad__accent">mínimo de 30% de madera recuperada</span>,
-              rescatando vetas y marcas que ningún proceso industrial puede
-              replicar.
+              <span class="sostenibilidad__accent">
+                mínimo de 30% de madera recuperada
+              </span>,
+              rescatando vetas y marcas que ningún proceso industrial
+              puede replicar.
             </p>
+
           </div>
+
+
           <div class="sostenibilidad__media">
+
             <img
               src="./assets/Group 8.png"
               alt="Unión de madera recuperada y madera nueva"
-            />
+              loading="lazy"
+            >
+
           </div>
+
         </article>
 
-        <article class="sostenibilidad__row">
-          <div class="sostenibilidad__copy sostenibilidad__copy--wide-gap">
-            <h2 class="sostenibilidad__title">Cercanía, oficio y aire limpio</h2>
+
+
+        <article class="sostenibilidad__row reveal reveal--left">
+
+          <div class="sostenibilidad__copy">
+
+            <h2 class="sostenibilidad__title">
+              Cercanía, oficio y aire limpio.
+            </h2>
+
             <p class="sostenibilidad__text">
               Oficio local en el Gran Buenos Aires y
-              <span class="sostenibilidad__accent">acabados de bajo COV, libres de toxinas</span>.
-              Cuidamos a los artesanos y creamos piezas que respiran con tu
-              hogar.
+              <span class="sostenibilidad__accent">
+                acabados de bajo COV, libres de toxinas
+              </span>.
+              Cuidamos a los artesanos y creamos piezas que respiran
+              con tu hogar.
             </p>
+
           </div>
+
+
           <div class="sostenibilidad__media">
+
             <img
               src="./assets/u2884128359_A_raw_cross-section_log_of_Argentine_Algarrobo_wo_39d5ba76-1113-412d-8379-6209f2582572_32.png"
-              alt="Acabado natural con cera y frasco de vidrio"
-            />
+              alt="Acabado natural de madera"
+              loading="lazy"
+            >
+
           </div>
+
         </article>
+
       </div>
+
     </section>
 
-    <section class="catalogo">
+
+
+    <!-- =====================================================
+         CATÁLOGO
+    ====================================================== -->
+
+    <section
+      class="catalogo"
+      id="catalogo"
+      aria-labelledby="catalogoTitle"
+    >
+
       <div class="catalogo__container">
-        <nav class="catalogo__categories" aria-label="Categorías del catálogo">
-          <a class="catalogo__category catalogo__category--active" href="#">Livings</a>
-          <a class="catalogo__category" href="#">Comedor</a>
-          <a class="catalogo__category" href="#">Estudio</a>
-          <a class="catalogo__category" href="#">Ver todo</a>
+
+
+        <div class="section-heading">
+
+          <p class="section-heading__eyebrow">
+            COLECCIÓN
+          </p>
+
+          <h2
+            class="section-heading__title"
+            id="catalogoTitle"
+          >
+            Nuestros muebles.
+          </h2>
+
+          <p class="section-heading__text">
+            Encontrá la pieza perfecta para tu espacio.
+          </p>
+
+        </div>
+
+
+        <!-- Filtros -->
+
+        <nav
+          class="catalogo__categories"
+          aria-label="Categorías del catálogo"
+        >
+
+          <button
+            class="catalogo__category catalogo__category--active"
+            type="button"
+            data-categoria="todos"
+          >
+            TODOS
+          </button>
+
+          <button
+            class="catalogo__category"
+            type="button"
+            data-categoria="livings"
+          >
+            LIVING
+          </button>
+
+          <button
+            class="catalogo__category"
+            type="button"
+            data-categoria="comedor"
+          >
+            COMEDOR
+          </button>
+
+          <button
+            class="catalogo__category"
+            type="button"
+            data-categoria="estudio"
+          >
+            ESTUDIO
+          </button>
+
         </nav>
 
+
+        <!-- Productos -->
+
         <div class="catalogo__carousel">
-          <button class="catalogo__arrow" type="button" aria-label="Producto anterior">
-            <img src="./assets/arrow-left.png" alt="" />
+
+          <button
+            class="catalogo__arrow catalogo__arrow--prev"
+            id="catalogoPrev"
+            type="button"
+            aria-label="Productos anteriores"
+          >
+            ←
           </button>
 
-          <div class="catalogo__products">
-            <article class="catalogo__card">
-              <div class="catalogo__circle">
-                <img
-                  src="./assets/Mesa Comedor Pampa.png"
-                  alt="Mesa comedor Pampa"
-                />
-              </div>
-              <p class="catalogo__name">Mesa comedor Pampa</p>
-            </article>
 
-            <article class="catalogo__card">
-              <div class="catalogo__circle">
-                <img
-                  src="./assets/Biblioteca Recoleta.png"
-                  alt="Biblioteca Recoleta"
-                />
-              </div>
-              <p class="catalogo__name">Biblioteca Recoleta</p>
-            </article>
+          <div class="catalogo__viewport">
 
-            <article class="catalogo__card">
-              <div class="catalogo__circle">
-                <img
-                  src="./assets/Sofá Patagonia.png"
-                  alt="Sofá Patagonia"
-                />
-              </div>
-              <p class="catalogo__name">Sofá Patagonia</p>
-            </article>
+            <div
+              class="catalogo__products"
+              id="catalogoProducts"
+            ></div>
+
           </div>
 
-          <button class="catalogo__arrow" type="button" aria-label="Producto siguiente">
-            <img src="./assets/arrow-right.png" alt="" />
+
+          <button
+            class="catalogo__arrow catalogo__arrow--next"
+            id="catalogoNext"
+            type="button"
+            aria-label="Productos siguientes"
+          >
+            →
           </button>
+
         </div>
+
       </div>
+
     </section>
 
-    <section class="garantia">
+
+
+    <!-- =====================================================
+         OFERTAS
+    ====================================================== -->
+
+    <section
+      class="ofertas"
+      id="ofertas"
+      aria-labelledby="ofertasTitle"
+    >
+
+      <div class="ofertas__container">
+
+        <div class="section-heading">
+
+          <p class="section-heading__eyebrow">
+            OPORTUNIDADES
+          </p>
+
+          <h2
+            class="section-heading__title"
+            id="ofertasTitle"
+          >
+            Ofertas especiales.
+          </h2>
+
+          <p class="section-heading__text">
+            Piezas seleccionadas con precios especiales por tiempo limitado.
+          </p>
+
+        </div>
+
+
+        <div
+          class="ofertas__products"
+          id="ofertasProducts"
+        ></div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         NUEVOS INGRESOS
+    ====================================================== -->
+
+    <section
+      class="nuevos"
+      id="nuevos"
+      aria-labelledby="nuevosTitle"
+    >
+
+      <div class="nuevos__container">
+
+        <div class="section-heading">
+
+          <p class="section-heading__eyebrow">
+            RECIÉN LLEGADOS
+          </p>
+
+          <h2
+            class="section-heading__title"
+            id="nuevosTitle"
+          >
+            Nuevos ingresos.
+          </h2>
+
+          <p class="section-heading__text">
+            Descubrí las últimas piezas que se incorporaron a nuestra colección.
+          </p>
+
+        </div>
+
+
+        <div
+          class="nuevos__products"
+          id="nuevosProducts"
+        ></div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         GARANTÍA
+    ====================================================== -->
+
+    <section
+      class="garantia"
+      id="garantia"
+    >
+
       <div class="garantia__container">
-        <h2 class="garantia__title">
+
+        <h2 class="garantia__title reveal">
           Pensado para toda la vida y cuidado por las mismas manos.
         </h2>
 
+
         <div class="garantia__content">
-          <div class="garantia__media">
+
+          <div class="garantia__media reveal reveal--left">
+
             <img
               src="./assets/u2884128359_A_raw_cross-section_log_of_Argentine_Algarrobo_wo_39d5ba76-1113-412d-8379-6209f2582572_3.png"
               alt="Telas, jabón y madera natural"
-            />
+              loading="lazy"
+            >
+
           </div>
+
 
           <div class="garantia__list">
-            <p class="garantia__item">
+
+            <p class="garantia__item reveal">
               Tu mueble cuenta con una garantía de
-              <strong>10 años</strong> en estructura y <strong>5 años</strong> en
-              acabados.
+              <strong>
+                <span class="counter" data-target="10">0</span> años
+              </strong>
+              en estructura y
+              <strong>
+                <span class="counter" data-target="5">0</span> años
+              </strong>
+              en acabados.
             </p>
-            <p class="garantia__item">
-              Te ofrecemos un servicio de <strong>restauración</strong> donde
-              recuperamos tu pieza antigua.
+
+
+            <p class="garantia__item reveal">
+              Te ofrecemos un servicio de
+              <strong>restauración</strong>
+              donde recuperamos tu pieza antigua.
             </p>
-            <p class="garantia__item">
-              Si sos cliente, <strong>te capacitamos</strong> para que cuides tu
-              mueble de la manera correcta.
+
+
+            <p class="garantia__item reveal">
+              Si sos cliente,
+              <strong>te capacitamos</strong>
+              para que cuides tu mueble de la manera correcta.
             </p>
-            <p class="garantia__item">
-              Recompramos hasta el <strong>40%</strong> de piezas bien cuidadas.
+
+
+            <p class="garantia__item reveal">
+              Recompramos hasta el
+              <strong>
+                <span class="counter" data-target="40">0</span>%
+              </strong>
+              de piezas bien cuidadas.
             </p>
-            <p class="garantia__item">
-              Te llevás un <strong>certificado de trazabilidad</strong> con el
-              origen de cada material utilizado.
+
+
+            <p class="garantia__item reveal">
+              Te llevás un
+              <strong>certificado de trazabilidad</strong>
+              con el origen de cada material utilizado.
             </p>
+
           </div>
+
         </div>
+
       </div>
+
     </section>
 
-    <section class="opiniones">
+
+
+    <!-- =====================================================
+         OPINIONES
+    ====================================================== -->
+
+    <section
+      class="opiniones"
+      id="opiniones"
+    >
+
       <div class="opiniones__container">
-        <h2 class="opiniones__title">
-          Opiniones <span class="opiniones__title-accent">destacadas</span>
+
+        <h2 class="opiniones__title reveal">
+          Opiniones
+          <span class="opiniones__title-accent">
+            destacadas
+          </span>
         </h2>
 
-        <blockquote class="opiniones__card">
-          <p class="opiniones__quote">
-            “Hacía tiempo que no veía muebles con este nivel de oficio. La
-            calidez del algarrobo, las terminaciones sin químicos y la certeza
-            de que está hecha para durar generaciones. Es el centro de nuestra
-            casa.”
-          </p>
-          <footer class="opiniones__author">— Martín R.</footer>
-        </blockquote>
+
+        <div class="opiniones__slider">
+
+
+          <blockquote
+            class="opiniones__card opiniones__card--active"
+            data-index="0"
+          >
+
+            <p class="opiniones__quote">
+              “Hacía tiempo que no veía muebles con este nivel de oficio.
+              La calidez del algarrobo, las terminaciones sin químicos
+              y la certeza de que está hecha para durar generaciones.
+              Es el centro de nuestra casa.”
+            </p>
+
+            <footer class="opiniones__author">
+              — Martín R.
+            </footer>
+
+          </blockquote>
+
+
+          <blockquote
+            class="opiniones__card"
+            data-index="1"
+            hidden
+          >
+
+            <p class="opiniones__quote">
+              “El sillón Patagonia superó todas nuestras expectativas.
+              Se nota el cuidado en cada detalle y el cuero envejece
+              de una forma hermosa.”
+            </p>
+
+            <footer class="opiniones__author">
+              — Carolina M.
+            </footer>
+
+          </blockquote>
+
+
+          <blockquote
+            class="opiniones__card"
+            data-index="2"
+            hidden
+          >
+
+            <p class="opiniones__quote">
+              “Pedimos una mesa a medida y el proceso fue impecable:
+              asesoramiento, muestras de madera y plazos cumplidos.”
+            </p>
+
+            <footer class="opiniones__author">
+              — Diego y Lucía
+            </footer>
+
+          </blockquote>
+
+
+          <blockquote
+            class="opiniones__card"
+            data-index="3"
+            hidden
+          >
+
+            <p class="opiniones__quote">
+              “La biblioteca Recoleta transformó nuestro living.
+              Materiales nobles, terminaciones perfectas y un equipo
+              que realmente escucha.”
+            </p>
+
+            <footer class="opiniones__author">
+              — Ana P.
+            </footer>
+
+          </blockquote>
+
+        </div>
+
+
+        <div
+          class="opiniones__dots"
+          role="tablist"
+          aria-label="Testimonios"
+        >
+
+          <button
+            class="opiniones__dot opiniones__dot--active"
+            type="button"
+            aria-label="Opinión 1"
+            data-index="0"
+          ></button>
+
+          <button
+            class="opiniones__dot"
+            type="button"
+            aria-label="Opinión 2"
+            data-index="1"
+          ></button>
+
+          <button
+            class="opiniones__dot"
+            type="button"
+            aria-label="Opinión 3"
+            data-index="2"
+          ></button>
+
+          <button
+            class="opiniones__dot"
+            type="button"
+            aria-label="Opinión 4"
+            data-index="3"
+          ></button>
+
+        </div>
+
       </div>
+
     </section>
 
-    <section class="contacto" id="contacto">
+
+
+    <!-- =====================================================
+         CONTACTO
+    ====================================================== -->
+
+    <section
+      class="contacto"
+      id="contacto"
+    >
+
       <div class="contacto__container">
-        <h2 class="contacto__title">Contactanos</h2>
+
+        <h2 class="contacto__title reveal">
+          Contactanos
+        </h2>
+
 
         <div class="contacto__layout">
-          <form class="contacto__form" action="#" method="post">
-            <p class="contacto__form-title">Mandanos tu consulta</p>
+
+
+          <form
+            class="contacto__form reveal"
+            id="contactoForm"
+            action="#"
+            method="post"
+            novalidate
+          >
+
+            <p class="contacto__form-title">
+              Mandanos tu consulta
+            </p>
+
 
             <div class="contacto__fields">
+
               <div class="contacto__field">
-                <label class="contacto__sr-only" for="nombre">Nombre y apellido</label>
+
+                <label
+                  class="contacto__sr-only"
+                  for="nombre"
+                >
+                  Nombre y apellido
+                </label>
+
                 <input
                   id="nombre"
                   class="contacto__input"
@@ -250,11 +912,21 @@
                   name="nombre"
                   placeholder="Nombre y apellido"
                   autocomplete="name"
-                />
+                  required
+                >
+
               </div>
 
+
               <div class="contacto__field">
-                <label class="contacto__sr-only" for="email">Correo electrónico</label>
+
+                <label
+                  class="contacto__sr-only"
+                  for="email"
+                >
+                  Correo electrónico
+                </label>
+
                 <input
                   id="email"
                   class="contacto__input"
@@ -262,101 +934,309 @@
                   name="email"
                   placeholder="Correo electrónico"
                   autocomplete="email"
-                />
+                  required
+                >
+
               </div>
 
+
               <div class="contacto__field">
-                <label class="contacto__sr-only" for="consulta">Consulta</label>
+
+                <label
+                  class="contacto__sr-only"
+                  for="consulta"
+                >
+                  Consulta
+                </label>
+
                 <textarea
                   id="consulta"
                   class="contacto__textarea"
                   name="consulta"
                   placeholder="Consulta"
                   rows="6"
+                  required
                 ></textarea>
+
               </div>
+
             </div>
 
-            <button class="contacto__submit" type="submit">Enviar</button>
+
+            <button
+              class="contacto__submit"
+              type="submit"
+            >
+              ENVIAR
+            </button>
+
+
+            <p
+              class="contacto__success"
+              id="contactoSuccess"
+              hidden
+            >
+              Recibimos tu consulta. Te respondemos en menos de 24 horas.
+            </p>
+
           </form>
 
-          <aside class="contacto__info">
+
+
+          <aside class="contacto__info reveal reveal--right">
+
             <address class="contacto__address">
-              <p><strong>Showroom y Taller</strong></p>
-              <p>Hermanos Jota — Casa Taller</p>
+
               <p>
-                Av. San Juan 2847<br />
-                C1232AAB — Barrio de San Cristóbal<br />
+                <strong>Showroom y Taller</strong>
+              </p>
+
+              <p>
+                Hermanos Jota — Casa Taller
+              </p>
+
+              <p>
+                Av. San Juan 2847<br>
+                C1232AAB — Barrio de San Cristóbal<br>
                 Ciudad Autónoma de Buenos Aires, Argentina
               </p>
+
             </address>
 
+
             <div class="map-container">
+
               <iframe
                 src="https://www.google.com/maps?q=Av.+San+Juan+2847,+San+Crist%C3%B3bal,+Buenos+Aires&output=embed"
                 title="Ubicación del showroom Hermanos Jota"
                 width="100%"
                 height="100%"
-                style="border: 0"
+                style="border:0"
                 allowfullscreen=""
                 loading="lazy"
                 referrerpolicy="no-referrer-when-downgrade"
               ></iframe>
+
             </div>
 
+
             <p class="contacto__horarios">
-              <strong>Horarios:</strong><br />
-              Lunes a Viernes: 10:00 - 19:00<br />
-              Sábados: 10:00 - 14:00
+
+              <strong>Horarios:</strong><br>
+
+              Lunes a Viernes:
+              10:00 - 19:00<br>
+
+              Sábados:
+              10:00 - 14:00
+
             </p>
+
           </aside>
+
         </div>
+
       </div>
+
     </section>
 
-    <footer class="pie">
-      <div class="pie__container">
-        <h2 class="pie__title">Nuestras redes</h2>
+  </main>
 
-        <div class="pie__redes">
-          <div class="pie__item">
-            <p class="pie__label">Email general</p>
-            <a class="pie__link" href="mailto:info@hermanosjota.com.ar">
-              info@hermanosjota.com.ar
-            </a>
-          </div>
 
-          <div class="pie__item">
-            <p class="pie__label">Ventas</p>
-            <a class="pie__link" href="mailto:ventas@hermanosjota.com.ar">
-              ventas@hermanosjota.com.ar
-            </a>
-          </div>
 
-          <div class="pie__item">
-            <p class="pie__label">Instagram</p>
-            <a
-              class="pie__link"
-              href="https://www.instagram.com/hermanosjota_ba"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              @hermanosjota_ba
-            </a>
-          </div>
+  <section class="quejas" id="quejas" aria-labelledby="quejasTitle">
+    <div class="quejas__container">
+      <h2 class="quejas__title" id="quejasTitle">Quejas y sugerencias</h2>
+      <p class="quejas__intro">Tu experiencia nos ayuda a mejorar. Contanos qué pasó o dejános una sugerencia y te responderemos a la brevedad.</p>
+      <form class="quejas__form" id="quejasForm">
+        <input type="text" placeholder="Nombre y apellido" required>
+        <input type="email" placeholder="Email" required>
+        <select required><option value="">Motivo</option><option>Queja</option><option>Sugerencia</option><option>Consulta</option><option>Postventa</option></select>
+        <input type="text" placeholder="N.º de pedido (opcional)">
+        <textarea placeholder="Contanos en detalle..." required></textarea>
+        <button type="submit">ENVIAR MENSAJE</button>
+      </form>
+    </div>
+  </section>
 
-          <div class="pie__item">
-            <p class="pie__label">WhatsApp</p>
-            <a class="pie__link" href="https://wa.me/541145678900">
-              +54 11 4567-8900
-            </a>
-          </div>
+  <!-- =====================================================
+       PANEL DEL CARRITO
+  ====================================================== -->
+
+  <aside
+    class="cart-panel"
+    id="cartPanel"
+    aria-label="Carrito de compras"
+    aria-hidden="true"
+  >
+
+    <div class="cart-panel__header">
+
+      <h2 class="cart-panel__title">
+        Tu carrito
+      </h2>
+
+      <button
+        class="cart-panel__close"
+        id="cartClose"
+        type="button"
+        aria-label="Cerrar carrito"
+      >
+        ×
+      </button>
+
+    </div>
+
+
+    <div
+      class="cart-panel__items"
+      id="cartItems"
+    >
+
+      <p class="cart-panel__empty">
+        Tu carrito está vacío.
+      </p>
+
+    </div>
+
+
+    <div class="cart-panel__footer">
+
+      <div class="cart-panel__total">
+
+        <span>
+          Total
+        </span>
+
+        <strong id="cartTotal">
+          $0
+        </strong>
+
+      </div>
+
+
+      <button
+        class="cart-panel__checkout"
+        id="cartCheckout"
+        type="button"
+      >
+        FINALIZAR COMPRA
+      </button>
+
+    </div>
+
+  </aside>
+
+
+  <!-- Fondo oscuro del carrito -->
+  <div
+    class="cart-overlay"
+    id="cartOverlay"
+    hidden
+  ></div>
+
+
+
+  <!-- =====================================================
+       FOOTER
+  ====================================================== -->
+
+  <footer class="pie">
+
+    <div class="pie__container">
+
+      <h2 class="pie__title reveal">
+        Nuestras redes
+      </h2>
+
+
+      <div class="pie__redes">
+
+
+        <div class="pie__item reveal">
+
+          <p class="pie__label">
+            Email general
+          </p>
+
+          <a
+            class="pie__link"
+            href="mailto:info@hermanosjota.com.ar"
+          >
+            info@hermanosjota.com.ar
+          </a>
+
         </div>
 
-        <p class="pie__copy">
-          HERMANOS JOTA, 2026, TODOS LOS DERECHOS RESERVADOS
-        </p>
+
+        <div class="pie__item reveal">
+
+          <p class="pie__label">
+            Ventas
+          </p>
+
+          <a
+            class="pie__link"
+            href="mailto:ventas@hermanosjota.com.ar"
+          >
+            ventas@hermanosjota.com.ar
+          </a>
+
+        </div>
+
+
+        <div class="pie__item reveal">
+
+          <p class="pie__label">
+            Instagram
+          </p>
+
+          <a
+            class="pie__link"
+            href="https://www.instagram.com/hermanosjota_ba"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            @hermanosjota_ba
+          </a>
+
+        </div>
+
+
+        <div class="pie__item reveal">
+
+          <p class="pie__label">
+            WhatsApp
+          </p>
+
+          <a
+            class="pie__link"
+            href="https://wa.me/541145678900"
+          >
+            +54 11 4567-8900
+          </a>
+
+        </div>
+
       </div>
-    </footer>
-  </body>
+
+
+      <p class="pie__copy">
+        HERMANOS JOTA — 2026 — TODOS LOS DERECHOS RESERVADOS
+      </p>
+
+    </div>
+
+  </footer>
+
+
+
+  <!-- =====================================================
+       JAVASCRIPT
+  ====================================================== -->
+
+  <script src="./main.js"></script>
+
+</body>
+
 </html>
