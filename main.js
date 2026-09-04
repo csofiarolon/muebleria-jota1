@@ -233,7 +233,7 @@ document.addEventListener("DOMContentLoaded", () => {
   ========================================================= */
 
   const cartButton = document.getElementById("cartButton");
-  const cartDrawer = document.getElementById("cartDrawer");
+  const cartDrawer = document.getElementById("cartPanel"); 
   const cartOverlay = document.getElementById("cartOverlay");
   const cartClose = document.getElementById("cartClose");
   const cartItems = document.getElementById("cartItems");
@@ -267,7 +267,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     guardarCarrito();
     renderizarCarrito();
-    abrirCarrito();
   }
 
   function cambiarCantidad(id, cambio) {
@@ -517,71 +516,188 @@ document.addEventListener("DOMContentLoaded", () => {
      SLIDER DE OPINIONES
   ========================================================= */
 
-  const tarjetasOpiniones =
-    document.querySelectorAll(".opiniones__card");
+  const tarjetasOpiniones = document.querySelectorAll(".opiniones__card");
+  const puntosOpiniones = document.querySelectorAll(".opiniones__dot");
+  const sliderContainer = document.querySelector(".opiniones__slider");
+  
+  let opinionActualIndex = 0;
 
-  const puntosOpiniones =
-    document.querySelectorAll(".opiniones__dot");
+  // Si existe el contenedor y hay tarjetas, creamos e inyectamos las flechas
+  if (sliderContainer && tarjetasOpiniones.length > 0) {
+    // Aseguramos que el contenedor sea posicionable para ubicar las flechas
+    sliderContainer.style.position = "relative";
 
-  puntosOpiniones.forEach((dot) => {
-    dot.addEventListener("click", () => {
-      const index = Number(dot.dataset.index);
+    // Flecha Anterior
+    const flechaPrev = document.createElement("button");
+    flechaPrev.innerHTML = "❮";
+    flechaPrev.setAttribute("aria-label", "Opinión anterior");
+    Object.assign(flechaPrev.style, {
+      position: "absolute",
+      left: "0",
+      top: "50%",
+      transform: "translateY(-50%)",
+      background: "none",
+      border: "none",
+      fontSize: "2rem",
+      cursor: "pointer",
+      color: "var(--color-primary, #333)", 
+      zIndex: "10",
+      padding: "10px"
+    });
 
-      tarjetasOpiniones.forEach((card) => {
-        card.hidden = true;
-        card.classList.remove(
-          "opiniones__card--active"
-        );
-      });
+    // Flecha Siguiente
+    const flechaNext = document.createElement("button");
+    flechaNext.innerHTML = "❯";
+    flechaNext.setAttribute("aria-label", "Opinión siguiente");
+    Object.assign(flechaNext.style, {
+      position: "absolute",
+      right: "0",
+      top: "50%",
+      transform: "translateY(-50%)",
+      background: "none",
+      border: "none",
+      fontSize: "2rem",
+      cursor: "pointer",
+      color: "var(--color-primary, #333)", 
+      zIndex: "10",
+      padding: "10px"
+    });
 
-      puntosOpiniones.forEach((punto) => {
-        punto.classList.remove(
-          "opiniones__dot--active"
-        );
-      });
+    sliderContainer.appendChild(flechaPrev);
+    sliderContainer.appendChild(flechaNext);
 
-      if (tarjetasOpiniones[index]) {
-        tarjetasOpiniones[index].hidden = false;
-        tarjetasOpiniones[index].classList.add(
-          "opiniones__card--active"
-        );
+    // Lógica unificada para cambiar las opiniones
+    function mostrarOpinion(index) {
+      // Manejo del ciclo (si pasa de la última vuelve a la primera y viceversa)
+      if (index < 0) {
+        opinionActualIndex = tarjetasOpiniones.length - 1;
+      } else if (index >= tarjetasOpiniones.length) {
+        opinionActualIndex = 0;
+      } else {
+        opinionActualIndex = index;
       }
 
-      dot.classList.add(
-        "opiniones__dot--active"
-      );
+      // Reiniciamos todas las tarjetas y puntos
+      tarjetasOpiniones.forEach((card) => {
+        card.hidden = true;
+        card.classList.remove("opiniones__card--active");
+      });
+      puntosOpiniones.forEach((punto) => {
+        punto.classList.remove("opiniones__dot--active");
+      });
+
+      // Activamos solo la correspondiente
+      if (tarjetasOpiniones[opinionActualIndex]) {
+        tarjetasOpiniones[opinionActualIndex].hidden = false;
+        tarjetasOpiniones[opinionActualIndex].classList.add("opiniones__card--active");
+      }
+      if (puntosOpiniones[opinionActualIndex]) {
+        puntosOpiniones[opinionActualIndex].classList.add("opiniones__dot--active");
+      }
+    }
+
+    // Listeners de las flechas
+    flechaPrev.addEventListener("click", () => mostrarOpinion(opinionActualIndex - 1));
+    flechaNext.addEventListener("click", () => mostrarOpinion(opinionActualIndex + 1));
+
+    // Refactor del listener de los puntos originales para que actualicen el índice global
+    puntosOpiniones.forEach((dot) => {
+      dot.addEventListener("click", () => {
+        const index = Number(dot.dataset.index);
+        mostrarOpinion(index);
+      });
     });
-  });
+  }
 
   /* =========================================================
-     FORMULARIO
+     FORMULARIO (VALIDACIÓN Y MANEJO DEL DOM)
   ========================================================= */
 
-  const contactoForm =
-    document.getElementById("contactoForm");
+  const contactoForm = document.getElementById("contactoForm");
+  const contactoSuccess = document.getElementById("contactoSuccess");
+  
+  const inputNombre = document.getElementById("nombre");
+  const inputEmail = document.getElementById("email");
+  const inputConsulta = document.getElementById("consulta");
+  
+  const botonEnviar = document.querySelector(".contacto__submit");
+  if (botonEnviar) {
+    botonEnviar.style.marginTop = "0.5rem"; 
+  }
 
-  const contactoSuccess =
-    document.getElementById("contactoSuccess");
+  function mostrarError(inputElement, mensaje) {
+    const errorMsg = document.createElement("span");
+    errorMsg.className = "error-mensaje";
+    errorMsg.style.color = "#d9534f";
+    errorMsg.style.fontSize = "0.85rem";
+    errorMsg.style.display = "block";
+    errorMsg.style.marginTop = "4px";
+    errorMsg.textContent = mensaje;
+    
+    inputElement.parentNode.appendChild(errorMsg);
+    inputElement.style.borderColor = "#d9534f";
+  }
+
+  function limpiarErrores() {
+    const erroresPrevios = document.querySelectorAll(".error-mensaje");
+    erroresPrevios.forEach(error => error.remove());
+    
+    [inputNombre, inputEmail, inputConsulta].forEach(input => {
+      if(input) input.style.borderColor = ""; 
+    });
+  }
 
   if (contactoForm) {
     contactoForm.addEventListener("submit", (event) => {
       event.preventDefault();
-
-      if (contactoSuccess) {
-        contactoSuccess.hidden = false;
-        contactoSuccess.classList.add("is-visible");
+      
+      limpiarErrores();
+      
+      let formularioValido = true;
+      
+      const nombreValor = inputNombre.value.trim();
+      if (!nombreValor) {
+        mostrarError(inputNombre, "Por favor, ingresá tu nombre y apellido.");
+        formularioValido = false;
       }
 
-      contactoForm.reset();
+      const emailValor = inputEmail.value.trim();
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      
+      if (!emailValor) {
+        mostrarError(inputEmail, "El correo electrónico es obligatorio.");
+        formularioValido = false;
+      } else if (!emailRegex.test(emailValor)) {
+        mostrarError(inputEmail, "Ingresá un formato de correo válido (ej: nombre@correo.com).");
+        formularioValido = false;
+      }
 
-      setTimeout(() => {
+      const consultaValor = inputConsulta.value.trim();
+      if (!consultaValor) {
+        mostrarError(inputConsulta, "Por favor, escribí tu consulta.");
+        formularioValido = false;
+      }
+
+      if (formularioValido) {
         if (contactoSuccess) {
-          contactoSuccess.hidden = true;
-          contactoSuccess.classList.remove(
-            "is-visible"
-          );
+          contactoSuccess.textContent = `¡Gracias por tu mensaje, ${nombreValor}! Te respondemos en menos de 24 horas.`;
+          contactoSuccess.hidden = false;
+          contactoSuccess.classList.add("is-visible");
         }
-      }, 4000);
+
+        contactoForm.reset();
+
+        setTimeout(() => {
+          if (contactoSuccess) {
+            contactoSuccess.hidden = true;
+            contactoSuccess.classList.remove("is-visible");
+          }
+        }, 5000);
+      } else {
+        setTimeout(() => {
+          limpiarErrores();
+        }, 5000);
+      }
     });
   }
 
