@@ -834,3 +834,27 @@ function inicializarDetalleProducto() {
     `;
   }
 }
+// Activar / Desactivar Menú Hamburguesa en móviles
+document.addEventListener('DOMContentLoaded', () => {
+  const toggleBtn = document.querySelector('.menu-toggle');
+  const navMenu = document.querySelector('.nav-menu');
+
+  if (toggleBtn && navMenu) {
+    toggleBtn.addEventListener('click', () => {
+      navMenu.classList.toggle('activo');
+    });
+  }
+});
+
+// Controladores para la cantidad de productos
+function sumarCantidad() {
+  const input = document.getElementById('cantidad-producto');
+  if (input) input.value = parseInt(input.value) + 1;
+}
+
+function restarCantidad() {
+  const input = document.getElementById('cantidad-producto');
+  if (input && parseInt(input.value) > 1) {
+    input.value = parseInt(input.value) - 1;
+  }
+}

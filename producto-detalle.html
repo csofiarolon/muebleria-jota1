@@ -77,6 +77,58 @@
     </div>
   </main>
 
+  <!-- =====================================================
+     PANEL DEL CARRITO
+====================================================== -->
+<aside class="cart-panel" id="cartPanel" aria-label="Carrito de compras" aria-hidden="true">
+
+  <div class="cart-panel__header">
+    <h2 class="cart-panel__title">
+      Tu carrito
+    </h2>
+
+    <button
+      class="cart-panel__close"
+      id="cartClose"
+      type="button"
+      aria-label="Cerrar carrito">
+      ×
+    </button>
+  </div>
+
+  <div class="cart-panel__items" id="cartItems">
+
+    <p class="cart-panel__empty">
+      Tu carrito está vacío.
+    </p>
+
+  </div>
+
+  <div class="cart-panel__footer">
+
+    <div class="cart-panel__total">
+      <span>Total</span>
+
+      <strong id="cartTotal">
+        $0
+      </strong>
+    </div>
+
+    <button
+      class="cart-panel__checkout"
+      id="cartCheckout"
+      type="button">
+      FINALIZAR COMPRA
+    </button>
+
+  </div>
+
+</aside>
+
+<!-- Fondo oscuro del carrito -->
+<div class="cart-overlay" id="cartOverlay" hidden></div>
+
+
   <!-- FOOTER -->
   <footer class="pie">
     <div class="pie__container">
