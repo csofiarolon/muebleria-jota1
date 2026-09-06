@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contacto — Hermanos Jota</title>
+
+  <!-- Tipografías de marca -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+
+  <!-- Capa de textura grain -->
+  <div class="grain"></div>
+
+  <!-- HEADER -->
+  <header class="nav-bar" id="navBar">
+    <a href="./index.html" class="nav-bar__logo-link">
+      <img src="./assets/logo.svg" alt="Hermanos Jota" class="logo-header">
+    </a>
+
+    <nav class="secciones" id="navLinks">
+      <a href="./index.html">INICIO</a>
+      
+      <a href="./index.html#categorias">CATEGORÍAS</a>
+
+      <a href="./index.html#ofertas">OFERTAS</a>
+    </nav>
+
+    <div class="nav-bar__actions">
+      <!-- Perfil / Login -->
+      <div class="profile-wrap" id="profileWrap">
+        <button class="profile" id="profileBtn" type="button" aria-label="Mi cuenta">
+          <span class="profile__label">CUENTA</span>
+        </button>
+      </div>
+
+      <!-- Botón de Carrito con Contador dinámico -->
+      <button class="cart-button" id="cartButton" type="button" aria-label="Ver carrito">
+        <span class="cart-button__icon">🛒</span>
+        <span class="cart-button__label">CARRITO</span>
+        <span class="cart-button__count" id="cartCount">0</span>
+      </button>
+
+      <!-- Botón Menú Mobile -->
+      <button class="nav-bar__toggle" id="navToggle" type="button" aria-label="Abrir menú" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <main>
+    <section class="contacto" id="contacto">
+      <div class="contacto__container">
+
+
+
+        <div class="contacto__layout">
+
+          <!-- Formulario de Contacto -->
+          <form class="contacto__form reveal" id="contactoForm" action="#" method="post" novalidate>
+            <p class="contacto__form-title">
+              Mandanos tu consulta
+            </p>
+
+            <div class="contacto__fields">
+
+              <div class="contacto__field">
+                <label class="contacto__sr-only" for="nombre">
+                  Nombre y apellido
+                </label>
+                <input 
+                  id="nombre" 
+                  class="contacto__input" 
+                  type="text" 
+                  name="nombre" 
+                  placeholder="Nombre y apellido"
+                  autocomplete="name" 
+                  required
+                >
+              </div>
+
+              <div class="contacto__field">
+                <label class="contacto__sr-only" for="email">
+                  Correo electrónico
+                </label>
+                <input 
+                  id="email" 
+                  class="contacto__input" 
+                  type="email" 
+                  name="email" 
+                  placeholder="Correo electrónico"
+                  autocomplete="email" 
+                  required
+                >
+              </div>
+
+              <div class="contacto__field">
+                <label class="contacto__sr-only" for="consulta">
+                  Consulta
+                </label>
+                <textarea 
+                  id="consulta" 
+                  class="contacto__textarea" 
+                  name="consulta" 
+                  placeholder="Consulta" 
+                  rows="6"
+                  required
+                ></textarea>
+              </div>
+
+            </div>
+
+            <button class="contacto__submit" type="submit">
+              ENVIAR
+            </button>
+
+            <!-- Mensaje de éxito gestionado por main.js -->
+            <p class="contacto__success" id="contactoSuccess" hidden>
+              Recibimos tu consulta. Te respondemos en menos de 24 horas.
+            </p>
+          </form>
+
+          <!-- Información de Contacto / Showroom -->
+          <aside class="contacto__info reveal reveal--right">
+
+            <address class="contacto__address">
+              <p>
+                <strong>Showroom y Taller</strong>
+              </p>
+              <p>
+                Hermanos Jota — Casa Taller
+              </p>
+              <p>
+                Av. San Juan 2847<br>
+                C1232AAB — Barrio de San Cristóbal<br>
+                Ciudad Autónoma de Buenos Aires, Argentina
+              </p>
+            </address>
+
+            <div class="map-container">
+              <iframe
+                src="https://www.google.com/maps?q=Av.+San+Juan+2847,+San+Crist%C3%B3bal,+Buenos+Aires&output=embed"
+                title="Ubicación del showroom Hermanos Jota" 
+                width="100%" 
+                height="100%" 
+                style="border:0"
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade">
+              </iframe>
+            </div>
+
+            <p class="contacto__horarios">
+              <strong>Horarios:</strong><br>
+              Lunes a Viernes: 10:00 - 19:00<br>
+              Sábados: 10:00 - 14:00
+            </p>
+
+          </aside>
+
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="pie">
+    <div class="pie__container">
+      <h3 class="pie__title">Hermanos Jota</h3>
+
+      <div class="pie__redes">
+        <div>
+          <p class="pie__label">COLECCIONES</p>
+          <p><a href="./productos.html?categoria=livings" class="pie__link">Livings</a></p>
+          <p><a href="./productos.html?categoria=comedor" class="pie__link">Comedor</a></p>
+          <p><a href="./productos.html?categoria=estudio" class="pie__link">Estudio</a></p>
+        </div>
+
+        <div>
+          <p class="pie__label">SOBRE NOSOTROS</p>
+          <p><a href="./index.html#sostenibilidad" class="pie__link">Sostenibilidad</a></p>
+          <p><a href="./index.html#garantia" class="pie__link">Garantía y Calidad</a></p>
+          <p><a href="./index.html#opiniones" class="pie__link">Testimonios</a></p>
+        </div>
+
+        <div>
+          <p class="pie__label">CONTACTO</p>
+          <p><a href="mailto:info@hermanosjota.com.ar" class="pie__link">info@hermanosjota.com.ar</a></p>
+          <p><a href="tel:+541143085521" class="pie__link">+54 11 4308-5521</a></p>
+          <p><span class="pie__link">San Cristóbal, CABA</span></p>
+        </div>
+
+        <div>
+          <p class="pie__label">REDES SOCIALES</p>
+          <p><a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="pie__link">Instagram</a></p>
+          <p><a href="https://pinterest.com" target="_blank" rel="noopener noreferrer" class="pie__link">Pinterest</a></p>
+          <p><a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="pie__link">Facebook</a></p>
+        </div>
+      </div>
+
+      <p class="pie__copy">
+        © 2026 Hermanos Jota. Todos los derechos reservados. Diseño y desarrollo artesanal.
+      </p>
+    </div>
+  </footer>
+
+  <!-- DRAWER Y OVERLAY DEL CARRITO -->
+  <div class="cart-overlay" id="cartOverlay"></div>
+  <aside class="cart-panel" id="cartPanel">
+    <div class="cart-panel__header">
+      <h3 class="cart-panel__title">Tu Carrito</h3>
+      <button class="cart-panel__close" id="cartClose" type="button" aria-label="Cerrar carrito">×</button>
+    </div>
+    <div class="cart-panel__items" id="cartItems"></div>
+    <div class="cart-panel__footer">
+      <div class="cart-panel__total">
+        <span>Total:</span>
+        <strong id="cartTotal">$ 0</strong>
+      </div>
+      <button class="cart-panel__checkout" type="button">INICIAR COMPRA</button>
+    </div>
+  </aside>
+
+  <!-- SCRIPT PRINCIPAL -->
+  <script src="./main.js"></script>
+</body>
+</html>
