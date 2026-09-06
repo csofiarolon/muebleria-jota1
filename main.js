@@ -655,6 +655,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   /* --- FORMULARIO DE CONTACTO --- */
+  /* --- FORMULARIO DE CONTACTO --- */
   const contactoForm = document.getElementById("contactoForm");
   const contactoSuccess = document.getElementById("contactoSuccess");
   const inputNombre = document.getElementById("nombre");
@@ -686,13 +687,13 @@ document.addEventListener("DOMContentLoaded", () => {
       limpiarErrores();
 
       let formularioValido = true;
-      const nombreValor = inputNombre.value.trim();
+      const nombreValor = inputNombre ? inputNombre.value.trim() : "";
       if (!nombreValor) {
         mostrarError(inputNombre, "Por favor, ingresá tu nombre y apellido.");
         formularioValido = false;
       }
 
-      const emailValor = inputEmail.value.trim();
+      const emailValor = inputEmail ? inputEmail.value.trim() : "";
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!emailValor) {
         mostrarError(inputEmail, "El correo electrónico es obligatorio.");
@@ -702,19 +703,29 @@ document.addEventListener("DOMContentLoaded", () => {
         formularioValido = false;
       }
 
-      const consultaValor = inputConsulta.value.trim();
+      const consultaValor = inputConsulta ? inputConsulta.value.trim() : "";
       if (!consultaValor) {
         mostrarError(inputConsulta, "Por favor, escribí tu consulta.");
         formularioValido = false;
       }
 
       if (formularioValido) {
+        // MENSAJE DE CONFIRMACIÓN EN CONSOLA:
+        console.log("✅ Formulario enviado con éxito:", {
+          nombre: nombreValor,
+          email: emailValor,
+          consulta: consultaValor,
+          fecha: new Date().toLocaleTimeString()
+        });
+
         if (contactoSuccess) {
           contactoSuccess.textContent = `¡Gracias por tu mensaje, ${nombreValor}! Te respondemos en menos de 24 horas.`;
           contactoSuccess.hidden = false;
           contactoSuccess.classList.add("is-visible");
         }
+
         contactoForm.reset();
+
         setTimeout(() => {
           if (contactoSuccess) {
             contactoSuccess.hidden = true;
@@ -722,6 +733,7 @@ document.addEventListener("DOMContentLoaded", () => {
           }
         }, 5000);
       } else {
+        console.warn("⚠️ Validación de formulario fallida: revisá los campos obligatorios.");
         setTimeout(limpiarErrores, 5000);
       }
     });
