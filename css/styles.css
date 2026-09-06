@@ -1715,6 +1715,7 @@
       display: block;
       place-items: center;
       overflow: hidden;
+      border-radius: 2%;
     }
     
     .detalle-visual__frame img {
