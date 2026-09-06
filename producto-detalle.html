@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hermanos Jota</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- HEADER -->
+  <header class="nav-bar">
+    <a href="./index.html" class="nav-bar__logo-link">
+      <img class="logo-header" src="./assets/logo.svg" alt="Hermanos Jota">
+    </a>
+
+    <nav class="secciones" id="navLinks" aria-label="Navegación principal">
+      <a href="./index.html#inicio">INICIO</a>
+      <a href="./index.html#categorias">CATEGORÍAS</a>
+      <a href="./index.html#destacados">DESTACADOS</a>
+      <a href="./productos.html">CATÁLOGO</a>
+      <a href="./index.html#contacto">CONTACTO</a>
+    </nav>
+
+    <div class="nav-bar__actions">
+      <button class="profile" type="button" aria-label="Mi cuenta">
+        <span class="profile__label">SOFÍA</span>
+      </button>
+      <button class="cart-button" id="cartButton" type="button" aria-label="Carrito de compras">
+        <span class="cart-button__icon">🛒</span>
+        <span class="cart-button__label">CARRITO</span>
+        <span class="cart-button__count" id="cartCount">0</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- DETALLE DEL PRODUCTO -->
+  <main class="detalle-page" id="detallePage">
+    <div class="detalle-container" id="detalleContenedor">
+      
+      <!-- Columna Izquierda: Visual -->
+      <div class="detalle-visual">
+        <div class="detalle-visual__frame">
+          <div class="producto-badges" id="detalleBadges"></div>
+          <img id="detalleImagen" src="" alt="">
+        </div>
+      </div>
+
+      <!-- Columna Derecha: Información y Ficha Técnica -->
+      <div class="detalle-info">
+        <nav class="detalle-breadcrumb" aria-label="Ruta de navegación">
+          <a href="./index.html">INICIO</a> / 
+          <a href="./productos.html">COLECCIÓN</a> / 
+          <span id="detalleCategoriaBreadcrumb">CATEGORÍA</span>
+        </nav>
+
+        <h1 id="detalleTitulo" class="detalle-titulo">Cargando producto...</h1>
+        <p id="detallePrecio" class="detalle-precio">$0</p>
+        
+        <p id="detalleDescripcion" class="detalle-descripcion"></p>
+
+        <!-- Ficha técnica dinámica (dl semántico) -->
+        <dl class="detalle-specs" id="detalleSpecsLista"></dl>
+
+        <!-- Acciones -->
+        <div class="detalle-acciones">
+          <button type="button" id="detalleBtnAgregar" class="detalle-btn-add">
+            AGREGAR AL CARRITO
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="pie">
+    <div class="pie__container">
+      <h3 class="pie__title">Hermanos Jota</h3>
+      <div class="pie__redes">
+        <div>
+          <p class="pie__label">ESPACIOS</p>
+          <a href="./productos.html?categoria=livings" class="pie__link">Living</a><br>
+          <a href="./productos.html?categoria=comedor" class="pie__link">Comedor</a><br>
+          <a href="./productos.html?categoria=estudio" class="pie__link">Estudio</a>
+        </div>
+        <div>
+          <p class="pie__label">TALLER</p>
+          <a href="./index.html#sostenibilidad" class="pie__link">Sostenibilidad</a><br>
+          <a href="./index.html#garantia" class="pie__link">Artesanía</a>
+        </div>
+        <div>
+          <p class="pie__label">AYUDA</p>
+          <a href="./index.html#contacto" class="pie__link">Envíos & Entregas</a><br>
+          <a href="./index.html#contacto" class="pie__link">Garantía</a>
+        </div>
+        <div>
+          <p class="pie__label">CONTACTO</p>
+          <span class="pie__link">info@hermanosjota.com</span>
+        </div>
+      </div>
+      <p class="pie__copy">© 2026 Hermanos Jota. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <script src="./main.js"></script>
+</body>
+</html>
