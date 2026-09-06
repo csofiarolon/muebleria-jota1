@@ -333,92 +333,141 @@ function renderizarCarrito() {
 }
 
 /* =========================================================
+   RENDERIZADO DEL CATÁLOGO (Ámbito global)
+========================================================= */
+function renderizarProductos(lista) {
+  const contenedorProductos = document.getElementById("catalogoProducts");
+  if (!contenedorProductos) return;
+
+  contenedorProductos.innerHTML = "";
+
+  if (lista.length === 0) {
+    contenedorProductos.innerHTML = `
+      <div class="catalogo__empty" style="grid-column: 1/-1; text-align: center; padding: 40px;">
+        <p>No encontramos productos en esta categoría.</p>
+      </div>
+    `;
+    return;
+  }
+
+  lista.forEach((producto) => {
+    const card = document.createElement("article");
+    card.className = "catalogo__card";
+
+    const etiquetaOferta = producto.oferta
+      ? `<span class="producto-badge producto-badge--oferta">OFERTA</span>`
+      : "";
+
+    const etiquetaNuevo = producto.nuevo
+      ? `<span class="producto-badge producto-badge--nuevo">NUEVO</span>`
+      : "";
+
+    card.innerHTML = `
+      <a href="./producto-detalle.html?id=${producto.id}" class="catalogo__circle-link">
+        <div class="catalogo__circle">
+          <div class="producto-badges">
+            ${etiquetaOferta}
+            ${etiquetaNuevo}
+          </div>
+          <img
+            src="${producto.imagen}"
+            alt="${producto.nombre}"
+            loading="lazy"
+          />
+        </div>
+      </a>
+
+      <div class="catalogo__info">
+        <h3 class="catalogo__name">
+          <a href="./producto-detalle.html?id=${producto.id}" class="catalogo__name-link">
+            ${producto.nombre}
+          </a>
+        </h3>
+
+        <p class="catalogo__price">
+          ${formatearPrecio(producto.precio)}
+        </p>
+
+        <button
+          class="catalogo__add"
+          type="button"
+          data-id="${producto.id}"
+        >
+          Agregar al carrito
+        </button>
+      </div>
+    `;
+
+    contenedorProductos.appendChild(card);
+  });
+
+  contenedorProductos.querySelectorAll(".catalogo__add").forEach((boton) => {
+    boton.addEventListener("click", () => {
+      const id = Number(boton.dataset.id);
+      agregarAlCarrito(id);
+
+      boton.textContent = "✓ Agregado";
+      boton.classList.add("is-added");
+
+      setTimeout(() => {
+        boton.textContent = "Agregar al carrito";
+        boton.classList.remove("is-added");
+      }, 1200);
+    });
+  });
+}
+
+/* =========================================================
+   CARGA ASÍNCRONA DE PRODUCTOS (Promise + setTimeout + async/await)
+========================================================= */
+function consultarProductosAPI() {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(productos);
+    }, 400);
+  });
+}
+
+async function cargarCatalogoAsync() {
+  const contenedorProductos = document.getElementById("catalogoProducts");
+  if (!contenedorProductos) return;
+
+  contenedorProductos.innerHTML = `
+    <div style="grid-column: 1/-1; text-align: center; padding: 40px; color: var(--text-muted); font-size: 14px;">
+      <p>Cargando piezas exclusivas...</p>
+    </div>
+  `;
+
+  try {
+    const lista = await consultarProductosAPI();
+    const params = new URLSearchParams(window.location.search);
+    const categoriaUrl = params.get("categoria");
+
+    if (categoriaUrl) {
+      const filtrados = lista.filter((p) => p.categoria.toLowerCase() === categoriaUrl.toLowerCase());
+      renderizarProductos(filtrados.length > 0 ? filtrados : lista);
+      
+      document.querySelectorAll(".catalogo__category").forEach((btn) => {
+        btn.classList.toggle(
+          "catalogo__category--active",
+          btn.dataset.categoria === categoriaUrl
+        );
+      });
+    } else {
+      renderizarProductos(lista);
+    }
+  } catch (error) {
+    console.error("Error al cargar productos:", error);
+    contenedorProductos.innerHTML = `<p style="grid-column: 1/-1; text-align: center;">Error al cargar el catálogo.</p>`;
+  }
+}
+
+/* =========================================================
    INICIALIZACIÓN GENERAL (DOM)
 ========================================================= */
 document.addEventListener("DOMContentLoaded", () => {
-  /* --- CATÁLOGO --- */
-  const contenedorProductos = document.getElementById("catalogoProducts");
-
-  function renderizarProductos(lista) {
-    if (!contenedorProductos) return;
-
-    contenedorProductos.innerHTML = "";
-
-    if (lista.length === 0) {
-      contenedorProductos.innerHTML = `
-        <div class="catalogo__empty">
-          <p>No encontramos productos en esta categoría.</p>
-        </div>
-      `;
-      return;
-    }
-
-    lista.forEach((producto) => {
-      const card = document.createElement("article");
-      card.className = "catalogo__card";
-
-      const etiquetaOferta = producto.oferta
-        ? `<span class="producto-badge producto-badge--oferta">OFERTA</span>`
-        : "";
-
-      const etiquetaNuevo = producto.nuevo
-        ? `<span class="producto-badge producto-badge--nuevo">NUEVO</span>`
-        : "";
-
-      card.innerHTML = `
-        <a href="./producto-detalle.html?id=${producto.id}" class="catalogo__circle-link">
-          <div class="catalogo__circle">
-            <div class="producto-badges">
-              ${etiquetaOferta}
-              ${etiquetaNuevo}
-            </div>
-            <img
-              src="${producto.imagen}"
-              alt="${producto.nombre}"
-              loading="lazy"
-            />
-          </div>
-        </a>
-
-        <div class="catalogo__info">
-          <h3 class="catalogo__name">
-            <a href="./producto-detalle.html?id=${producto.id}" class="catalogo__name-link">
-              ${producto.nombre}
-            </a>
-          </h3>
-
-          <p class="catalogo__price">
-            ${formatearPrecio(producto.precio)}
-          </p>
-
-          <button
-            class="catalogo__add"
-            type="button"
-            data-id="${producto.id}"
-          >
-            Agregar al carrito
-          </button>
-        </div>
-      `;
-
-      contenedorProductos.appendChild(card);
-    });
-
-    document.querySelectorAll(".catalogo__add").forEach((boton) => {
-      boton.addEventListener("click", () => {
-        const id = Number(boton.dataset.id);
-        agregarAlCarrito(id);
-
-        boton.textContent = "✓ Agregado";
-        boton.classList.add("is-added");
-
-        setTimeout(() => {
-          boton.textContent = "Agregar al carrito";
-          boton.classList.remove("is-added");
-        }, 1200);
-      });
-    });
-  }
+  // Carga asíncrona inicial del catálogo
+  cargarCatalogoAsync();
 
   /* --- FILTROS DE CATEGORÍA --- */
   const botonesCategoria = document.querySelectorAll(".catalogo__category");
@@ -430,7 +479,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const categoria = boton.dataset.categoria;
         if (categoria === "todos") {
-          renderizarProductos(productos);
+          cargarCatalogoAsync();
         } else if (categoria === "ofertas") {
           renderizarProductos(productos.filter((prod) => prod.oferta));
         } else if (categoria === "nuevos") {
@@ -440,25 +489,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       });
     });
-  }
-
-  /* --- INICIALIZACIÓN CON URL SEARCH PARAMS (?categoria=) --- */
-  const params = new URLSearchParams(window.location.search);
-  const categoriaUrl = params.get("categoria");
-
-  if (categoriaUrl) {
-    const productosFiltrados = productos.filter((prod) => prod.categoria === categoriaUrl);
-    renderizarProductos(productosFiltrados);
-
-    botonesCategoria.forEach((boton) => {
-      if (boton.dataset.categoria === categoriaUrl) {
-        boton.classList.add("catalogo__category--active");
-      } else {
-        boton.classList.remove("catalogo__category--active");
-      }
-    });
-  } else {
-    renderizarProductos(productos);
   }
 
   /* --- BUSCADOR --- */
@@ -733,11 +763,11 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 /* =========================================================
-   PÁGINA DINÁMICA DE DETALLE DE PRODUCTO (UNA SOLA DEFINICIÓN)
+   PÁGINA DINÁMICA DE DETALLE DE PRODUCTO
 ========================================================= */
 function inicializarDetalleProducto() {
   const detalleContenedor = document.getElementById("detalleContenedor");
-  if (!detalleContenedor) return; // Se ejecuta solo si estamos en producto-detalle.html
+  if (!detalleContenedor) return;
 
   const params = new URLSearchParams(window.location.search);
   const productoId = parseInt(params.get("id"), 10);
@@ -834,26 +864,15 @@ function inicializarDetalleProducto() {
     `;
   }
 }
-// Activar / Desactivar Menú Hamburguesa en móviles
-document.addEventListener('DOMContentLoaded', () => {
-  const toggleBtn = document.querySelector('.menu-toggle');
-  const navMenu = document.querySelector('.nav-menu');
 
-  if (toggleBtn && navMenu) {
-    toggleBtn.addEventListener('click', () => {
-      navMenu.classList.toggle('activo');
-    });
-  }
-});
-
-// Controladores para la cantidad de productos
+/* Controladores para cantidad de producto individual (si existen en HTML) */
 function sumarCantidad() {
-  const input = document.getElementById('cantidad-producto');
+  const input = document.getElementById("cantidad-producto");
   if (input) input.value = parseInt(input.value) + 1;
 }
 
 function restarCantidad() {
-  const input = document.getElementById('cantidad-producto');
+  const input = document.getElementById("cantidad-producto");
   if (input && parseInt(input.value) > 1) {
     input.value = parseInt(input.value) - 1;
   }
