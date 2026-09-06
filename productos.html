@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="description"
+    content="Hermanos Jota — Mueblería artesanal con maderas nativas argentinas. Diseño, calidad y tradición familiar.">
+
+  <title>Mueblería Jota</title>
+
+  <!-- Tipografía -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap"
+    rel="stylesheet">
+
+  <!-- Estilos -->
+  <link rel="stylesheet" href="./css/variables.css">
+  <link rel="stylesheet" href="./css/styles.css">
+</head>
+
+<body>
+
+  <!-- Textura de fondo -->
+  <div class="grain" aria-hidden="true"></div>
+
+
+  <!-- =====================================================
+       HEADER / NAVBAR
+  ====================================================== -->
+
+  <header class="nav-bar" id="navBar">
+
+    <!-- Logo -->
+    <a href="#inicio" class="nav-bar__logo-link">
+      <img class="logo-header" src="./assets/logo.svg" alt="Mueblería Jota">
+    </a>
+
+
+    <!-- Botón menú mobile -->
+    <button class="nav-bar__toggle" id="navToggle" type="button" aria-label="Abrir menú" aria-expanded="false"
+      aria-controls="navLinks">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+
+    <!-- Navegación principal -->
+    <nav class="secciones" id="navLinks" aria-label="Navegación principal">
+
+      <a href="#inicio">INICIO</a>
+
+      <a href="#catalogo">CATEGORÍAS</a>
+
+      <a href="#ofertas">OFERTAS</a>
+
+      <a href="#nuevos">NUEVOS INGRESOS</a>
+
+      <a href="#contacto">CONTACTO</a>
+
+    </nav>
+
+
+    <!-- Acciones del usuario -->
+    <div class="nav-bar__actions">
+
+      <!-- Usuario -->
+      <div class="profile-wrap" id="profileWrap">
+        <button class="profile" id="profileButton" type="button" aria-label="Perfil de usuario" aria-expanded="false">
+          <img class="profile__icon" src="./assets/icon-user.svg" alt="">
+          <span class="profile__label">SOFÍA</span>
+        </button>
+        <div class="profile-menu" id="profileMenu">
+          <p class="profile-menu__eyebrow">MI CUENTA</p>
+          <h3>Hola, Sofía</h3>
+          <a href="#contacto">Mis consultas</a>
+          <button type="button" id="loginToggle">Iniciar sesión</button>
+          <div class="login-box" id="loginBox">
+            <input type="email" id="loginEmail" placeholder="Email">
+            <input type="password" id="loginPassword" placeholder="Contraseña">
+            <button type="button" id="loginButton">INGRESAR</button>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- Carrito -->
+      <button class="cart-button" id="cartButton" type="button" aria-label="Abrir carrito" aria-controls="cartPanel">
+
+        <span class="cart-button__icon" aria-hidden="true">
+          🛒
+        </span>
+
+        <span class="cart-button__label">
+          CARRITO
+        </span>
+
+        <span class="cart-button__count" id="cartCount" aria-live="polite">
+          0
+        </span>
+
+      </button>
+
+    </div>
+
+  </header>
+
+
+<main>
+  
+    
+
+    <section class="catalogo" id="catalogo" aria-labelledby="catalogoTitle">
+
+      <div class="catalogo__container">
+
+
+        <div class="section-heading">
+
+          <p class="section-heading__eyebrow">
+            COLECCIÓN
+          </p>
+
+          <h2 class="section-heading__title" id="catalogoTitle">
+            Nuestros muebles.
+          </h2>
+
+          <p class="section-heading__text">
+            Encontrá la pieza perfecta para tu espacio.
+          </p>
+
+        </div>
+          
+        <!-- Filtros -->
+
+        <nav class="catalogo__categories" aria-label="Categorías del catálogo">
+
+          <button class="catalogo__category catalogo__category--active" type="button" data-categoria="todos">
+            TODOS
+          </button>
+
+          <button class="catalogo__category" type="button" data-categoria="livings">
+            LIVING
+          </button>
+
+          <button class="catalogo__category" type="button" data-categoria="comedor">
+            COMEDOR
+          </button>
+
+          <button class="catalogo__category" type="button" data-categoria="estudio">
+            ESTUDIO
+          </button>
+
+        </nav>
+
+        <div class="search-box">
+            <input type="search" id="input-busqueda" placeholder="Buscar muebles...">
+          </div>
+  
+          <!-- Productos (Carrusel intacto) -->
+          <div class="catalogo__carousel">
+            <button class="catalogo__arrow catalogo__arrow--prev" id="catalogoPrev" type="button" aria-label="Productos anteriores">
+              ←
+            </button>
+  
+            <div class="catalogo__viewport">
+              <div class="catalogo__products" id="catalogoProducts"></div>
+            </div>
+  
+            <button class="catalogo__arrow catalogo__arrow--next" id="catalogoNext" type="button" aria-label="Productos siguientes">
+              →
+            </button>
+          </div>
+
+
+        <!-- Productos -->
+
+        <div class="catalogo__carousel">
+
+          <button class="catalogo__arrow catalogo__arrow--prev" id="catalogoPrev" type="button"
+            aria-label="Productos anteriores">
+            ←
+          </button>
+
+
+          <div class="catalogo__viewport">
+
+            <div class="catalogo__products" id="catalogoProducts"></div>
+
+          </div>
+
+
+          <button class="catalogo__arrow catalogo__arrow--next" id="catalogoNext" type="button"
+            aria-label="Productos siguientes">
+            →
+          </button>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- =====================================================
+         CONTACTO
+    ====================================================== -->
+
+    <section class="contacto" id="contacto">
+
+      <div class="contacto__container">
+
+        <h2 class="contacto__title reveal">
+          Contactanos
+        </h2>
+
+
+        <div class="contacto__layout">
+
+
+          <form class="contacto__form reveal" id="contactoForm" action="#" method="post" novalidate>
+
+            <p class="contacto__form-title">
+              Mandanos tu consulta
+            </p>
+
+
+            <div class="contacto__fields">
+
+              <div class="contacto__field">
+
+                <label class="contacto__sr-only" for="nombre">
+                  Nombre y apellido
+                </label>
+
+                <input id="nombre" class="contacto__input" type="text" name="nombre" placeholder="Nombre y apellido"
+                  autocomplete="name" required>
+
+              </div>
+
+
+              <div class="contacto__field">
+
+                <label class="contacto__sr-only" for="email">
+                  Correo electrónico
+                </label>
+
+                <input id="email" class="contacto__input" type="email" name="email" placeholder="Correo electrónico"
+                  autocomplete="email" required>
+
+              </div>
+
+
+              <div class="contacto__field">
+
+                <label class="contacto__sr-only" for="consulta">
+                  Consulta
+                </label>
+
+                <textarea id="consulta" class="contacto__textarea" name="consulta" placeholder="Consulta" rows="6"
+                  required></textarea>
+
+              </div>
+
+            </div>
+
+
+            <button class="contacto__submit" type="submit">
+              ENVIAR
+            </button>
+
+
+            <p class="contacto__success" id="contactoSuccess" hidden>
+              Recibimos tu consulta. Te respondemos en menos de 24 horas.
+            </p>
+
+          </form>
+
+
+
+          <aside class="contacto__info reveal reveal--right">
+
+            <address class="contacto__address">
+
+              <p>
+                <strong>Showroom y Taller</strong>
+              </p>
+
+              <p>
+                Hermanos Jota — Casa Taller
+              </p>
+
+              <p>
+                Av. San Juan 2847<br>
+                C1232AAB — Barrio de San Cristóbal<br>
+                Ciudad Autónoma de Buenos Aires, Argentina
+              </p>
+
+            </address>
+
+
+            <div class="map-container">
+
+              <iframe
+                src="https://www.google.com/maps?q=Av.+San+Juan+2847,+San+Crist%C3%B3bal,+Buenos+Aires&output=embed"
+                title="Ubicación del showroom Hermanos Jota" width="100%" height="100%" style="border:0"
+                allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+            </div>
+
+
+            <p class="contacto__horarios">
+
+              <strong>Horarios:</strong><br>
+
+              Lunes a Viernes:
+              10:00 - 19:00<br>
+
+              Sábados:
+              10:00 - 14:00
+
+            </p>
+
+          </aside>
+
+        </div>
+
+      </div>
+
+    </section>
+
+</main> 
+
+  <!-- =====================================================
+       PANEL DEL CARRITO
+  ====================================================== -->
+
+  <aside class="cart-panel" id="cartPanel" aria-label="Carrito de compras" aria-hidden="true">
+
+    <div class="cart-panel__header">
+
+      <h2 class="cart-panel__title">
+        Tu carrito
+      </h2>
+
+      <button class="cart-panel__close" id="cartClose" type="button" aria-label="Cerrar carrito">
+        ×
+      </button>
+
+    </div>
+
+
+    <div class="cart-panel__items" id="cartItems">
+
+      <p class="cart-panel__empty">
+        Tu carrito está vacío.
+      </p>
+
+    </div>
+
+
+    <div class="cart-panel__footer">
+
+      <div class="cart-panel__total">
+
+        <span>
+          Total
+        </span>
+
+        <strong id="cartTotal">
+          $0
+        </strong>
+
+      </div>
+
+
+      <button class="cart-panel__checkout" id="cartCheckout" type="button">
+        FINALIZAR COMPRA
+      </button>
+
+    </div>
+
+  </aside>
+
+
+  <!-- Fondo oscuro del carrito -->
+  <div class="cart-overlay" id="cartOverlay" hidden></div>
+
+
+
+  <!-- =====================================================
+       FOOTER
+  ====================================================== -->
+
+  <footer class="pie">
+
+    <div class="pie__container">
+
+      <h2 class="pie__title reveal">
+        Nuestras redes
+      </h2>
+
+
+      <div class="pie__redes">
+
+
+        <div class="pie__item reveal">
+
+          <p class="pie__label">
+            Email general
+          </p>
+
+          <a class="pie__link" href="mailto:info@hermanosjota.com.ar">
+            info@hermanosjota.com.ar
+          </a>
+
+        </div>
+
+
+        <div class="pie__item reveal">
+
+          <p class="pie__label">
+            Ventas
+          </p>
+
+          <a class="pie__link" href="mailto:ventas@hermanosjota.com.ar">
+            ventas@hermanosjota.com.ar
+          </a>
+
+        </div>
+
+
+        <div class="pie__item reveal">
+
+          <p class="pie__label">
+            Instagram
+          </p>
+
+          <a class="pie__link" href="https://www.instagram.com/hermanosjota_ba" target="_blank"
+            rel="noopener noreferrer">
+            @hermanosjota_ba
+          </a>
+
+        </div>
+
+
+        <div class="pie__item reveal">
+
+          <p class="pie__label">
+            WhatsApp
+          </p>
+
+          <a class="pie__link" href="https://wa.me/541145678900">
+            +54 11 4567-8900
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <p class="pie__copy">
+        HERMANOS JOTA — 2026 — TODOS LOS DERECHOS RESERVADOS
+      </p>
+
+    </div>
+
+  </footer>
+
+
+
+  <!-- =====================================================
+       JAVASCRIPT
+  ====================================================== -->
+
+  <script src="./main.js"></script>
+
+</body>
+
+</html>
