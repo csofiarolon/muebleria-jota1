@@ -6,28 +6,28 @@ document.addEventListener("DOMContentLoaded", () => {
   const productos = [
     {
       id: 1,
-      nombre: "Sillón Patagonia 2 Cuerpos",
+      nombre: "Sofá Patagonia",
       categoria: "livings",
       precio: 120000,
-      imagen: "./assets/Group 6.png",
+      imagen: "./assets/Sofá Patagonia.png",
       oferta: true,
       nuevo: false
     },
     {
       id: 2,
-      nombre: "Mesa Comedor Paraíso",
+      nombre: "Mesa Comedor Pampa",
       categoria: "comedor",
       precio: 85000,
-      imagen: "./assets/Group 7.png",
+      imagen: "./assets/Mesa Comedor Pampa.png",
       oferta: false,
       nuevo: true
     },
     {
       id: 3,
-      nombre: "Escritorio San Telmo",
+      nombre: "Escritorio Costa",
       categoria: "estudio",
       precio: 65000,
-      imagen: "./assets/Group 8.png",
+      imagen: "./assets/Escritorio Costa.png",
       oferta: false,
       nuevo: true
     },
@@ -36,61 +36,61 @@ document.addEventListener("DOMContentLoaded", () => {
       nombre: "Biblioteca Recoleta",
       categoria: "livings",
       precio: 95000,
-      imagen: "./assets/Group 6.png",
+      imagen: "./assets/Biblioteca Recoleta.png",
       oferta: true,
       nuevo: false
     },
     {
       id: 5,
-      nombre: "Silla Eames Algarrobo",
+      nombre: "Sillas Córdoba",
       categoria: "comedor",
       precio: 32000,
-      imagen: "./assets/Group 7.png",
+      imagen: "./assets/Sillas Córdoba.png",
       oferta: false,
       nuevo: false
     },
     {
       id: 6,
-      nombre: "Rack Patagonia",
+      nombre: "Aparador Uspallata",
       categoria: "livings",
       precio: 110000,
-      imagen: "./assets/Group 8.png",
+      imagen: "./assets/Aparador Uspallata.png",
       oferta: false,
       nuevo: true
     },
     {
       id: 7,
-      nombre: "Mesa de Luz Norte",
+      nombre: "Mesa de Noche Aconcagua",
       categoria: "livings",
       precio: 42000,
-      imagen: "./assets/Group 6.png",
+      imagen: "./assets/Mesa de Noche Aconcagua.png",
       oferta: true,
       nuevo: false
     },
     {
       id: 8,
-      nombre: "Mesa de Centro Jota",
+      nombre: "Mesa de Centro Araucaria",
       categoria: "livings",
       precio: 58000,
-      imagen: "./assets/Group 7.png",
+      imagen: "./assets/Mesa de Centro Araucaria.png",
       oferta: false,
       nuevo: true
     },
     {
       id: 9,
-      nombre: "Biblioteca San Telmo",
+      nombre: "Butaca Mendoza",
       categoria: "estudio",
       precio: 125000,
-      imagen: "./assets/Group 8.png",
+      imagen: "./assets/Butaca Mendoza.png",
       oferta: false,
       nuevo: false
     },
     {
       id: 10,
-      nombre: "Escritorio Algarrobo",
-      categoria: "estudio",
+      nombre: "Sillón Copacabana",
+      categoria: "livings",
       precio: 98000,
-      imagen: "./assets/Group 7.png",
+      imagen: "./assets/Sillón Copacabana.png",
       oferta: true,
       nuevo: true
     }
@@ -226,14 +226,59 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  renderizarProductos(productos);
+  /* =========================================================
+     INICIALIZACIÓN CON PARÁMETRO DE URL (LIVING / COMEDOR / ESTUDIO)
+  ========================================================= */
+  const params = new URLSearchParams(window.location.search);
+  const categoriaUrl = params.get("categoria");
+
+  if (categoriaUrl) {
+    // Si viene desde "Ver colección", filtra por esa categoría
+    const productosFiltrados = productos.filter(
+      (prod) => prod.categoria === categoriaUrl
+    );
+    renderizarProductos(productosFiltrados);
+
+    // Marca como activo el botón correspondiente en la botonera
+    botonesCategoria.forEach((boton) => {
+      if (boton.dataset.categoria === categoriaUrl) {
+        boton.classList.add("catalogo__category--active");
+      } else {
+        boton.classList.remove("catalogo__category--active");
+      }
+    });
+  } else {
+    // Si entró directo sin filtro en el link, carga todos normalmente
+    renderizarProductos(productos);
+  }
+
+  /* =========================================================
+     BUSCADOR SIMPLE
+  ========================================================= */
+  const inputBusqueda = document.getElementById("input-busqueda");
+
+  if (inputBusqueda) {
+    inputBusqueda.addEventListener("input", (e) => {
+      const termino = e.target.value.toLowerCase().trim();
+
+      const filtrados = productos.filter((prod) => {
+        return (
+          prod.nombre.toLowerCase().includes(termino) ||
+          prod.categoria.toLowerCase().includes(termino)
+        );
+      });
+
+      renderizarProductos(filtrados);
+    });
+  }
+
 
   /* =========================================================
      CARRITO
   ========================================================= */
 
   const cartButton = document.getElementById("cartButton");
-  const cartDrawer = document.getElementById("cartPanel"); 
+  const cartDrawer = document.getElementById("cartPanel");
   const cartOverlay = document.getElementById("cartOverlay");
   const cartClose = document.getElementById("cartClose");
   const cartItems = document.getElementById("cartItems");
@@ -519,7 +564,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const tarjetasOpiniones = document.querySelectorAll(".opiniones__card");
   const puntosOpiniones = document.querySelectorAll(".opiniones__dot");
   const sliderContainer = document.querySelector(".opiniones__slider");
-  
+
   let opinionActualIndex = 0;
 
   // Si existe el contenedor y hay tarjetas, creamos e inyectamos las flechas
@@ -540,7 +585,7 @@ document.addEventListener("DOMContentLoaded", () => {
       border: "none",
       fontSize: "2rem",
       cursor: "pointer",
-      color: "var(--color-primary, #333)", 
+      color: "var(--color-primary, #333)",
       zIndex: "10",
       padding: "10px"
     });
@@ -558,7 +603,7 @@ document.addEventListener("DOMContentLoaded", () => {
       border: "none",
       fontSize: "2rem",
       cursor: "pointer",
-      color: "var(--color-primary, #333)", 
+      color: "var(--color-primary, #333)",
       zIndex: "10",
       padding: "10px"
     });
@@ -615,14 +660,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const contactoForm = document.getElementById("contactoForm");
   const contactoSuccess = document.getElementById("contactoSuccess");
-  
+
   const inputNombre = document.getElementById("nombre");
   const inputEmail = document.getElementById("email");
   const inputConsulta = document.getElementById("consulta");
-  
+
   const botonEnviar = document.querySelector(".contacto__submit");
   if (botonEnviar) {
-    botonEnviar.style.marginTop = "0.5rem"; 
+    botonEnviar.style.marginTop = "0.5rem";
   }
 
   function mostrarError(inputElement, mensaje) {
@@ -633,7 +678,7 @@ document.addEventListener("DOMContentLoaded", () => {
     errorMsg.style.display = "block";
     errorMsg.style.marginTop = "4px";
     errorMsg.textContent = mensaje;
-    
+
     inputElement.parentNode.appendChild(errorMsg);
     inputElement.style.borderColor = "#d9534f";
   }
@@ -641,20 +686,20 @@ document.addEventListener("DOMContentLoaded", () => {
   function limpiarErrores() {
     const erroresPrevios = document.querySelectorAll(".error-mensaje");
     erroresPrevios.forEach(error => error.remove());
-    
+
     [inputNombre, inputEmail, inputConsulta].forEach(input => {
-      if(input) input.style.borderColor = ""; 
+      if (input) input.style.borderColor = "";
     });
   }
 
   if (contactoForm) {
     contactoForm.addEventListener("submit", (event) => {
       event.preventDefault();
-      
+
       limpiarErrores();
-      
+
       let formularioValido = true;
-      
+
       const nombreValor = inputNombre.value.trim();
       if (!nombreValor) {
         mostrarError(inputNombre, "Por favor, ingresá tu nombre y apellido.");
@@ -663,7 +708,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const emailValor = inputEmail.value.trim();
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      
+
       if (!emailValor) {
         mostrarError(inputEmail, "El correo electrónico es obligatorio.");
         formularioValido = false;
